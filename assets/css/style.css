@@ -1,1 +1,634 @@
-
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: #e9e4d9;
+  color: #171715;
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.5;
+}
+.paper-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  z-index: 20;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+a {
+  color: inherit;
+}
+.masthead {
+  max-width: 1500px;
+  margin: auto;
+  padding: 16px 4vw 0;
+  border-bottom: 1px solid #171715;
+}
+.utility,
+.title-row,
+.nav,
+.cover-footer,
+.section-label,
+.mini-facts,
+.contact-links,
+footer {
+  font-family: "DM Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.68rem;
+}
+.utility {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #aaa398;
+  color: #5e5a52;
+}
+.title-row {
+  height: 100px;
+  display: grid;
+  grid-template-columns: 80px 1fr 80px;
+  align-items: center;
+}
+.publication {
+  font-family: "Libre Baskerville", serif;
+  text-align: center;
+  text-decoration: none;
+  font-size: clamp(1.7rem, 4vw, 4rem);
+  letter-spacing: -0.05em;
+}
+.issue {
+  text-align: right;
+}
+.menu {
+  display: none;
+  background: none;
+  border: 0;
+  font-size: 1.2rem;
+}
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  padding: 12px;
+  border-top: 1px solid #aaa398;
+}
+.nav a {
+  text-decoration: none;
+}
+.nav a:hover,
+.contact-links a:hover {
+  color: #8a6645;
+}
+.cover {
+  max-width: 1500px;
+  margin: auto;
+  padding: 18px 4vw 0;
+}
+.cover-kicker,
+.cover-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid #171715;
+  padding: 8px 0;
+}
+.cover-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  min-height: 650px;
+  border-bottom: 1px solid #171715;
+}
+.cover-main {
+  padding: 70px 6vw 50px 0;
+  border-right: 1px solid #aaa398;
+}
+.issue-label {
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+}
+.cover h1 {
+  font-family: "Libre Baskerville", serif;
+  font-size: clamp(4rem, 9vw, 9.5rem);
+  font-weight: 400;
+  line-height: 0.91;
+  letter-spacing: -0.075em;
+  margin: 28px 0;
+}
+.cover h1 i,
+h2 em,
+h3 em {
+  color: #8a6645;
+  font-style: italic;
+}
+.standfirst {
+  font-family: "Libre Baskerville", serif;
+  font-size: 1.1rem;
+  max-width: 650px;
+}
+.cover-byline {
+  font-family: "DM Mono", monospace;
+  font-size: 0.68rem;
+  margin-top: 40px;
+}
+.cover-art {
+  position: relative;
+  overflow: hidden;
+  background: #171715;
+  color: #e9e4d9;
+  min-height: 600px;
+}
+.orbit {
+  position: absolute;
+  border: 1px solid #b18a62;
+  border-radius: 50%;
+  width: 500px;
+  height: 500px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.o2 {
+  width: 340px;
+  height: 340px;
+  border-style: dashed;
+}
+.o3 {
+  width: 190px;
+  height: 190px;
+}
+.crosshair {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: #b18a62;
+  top: 50%;
+}
+.crosshair:after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 1px;
+  background: #b18a62;
+  left: 50%;
+  top: -250px;
+  height: 500px;
+}
+.art-note,
+.art-caption {
+  position: absolute;
+  font-family: "DM Mono", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+}
+.art-note {
+  top: 30px;
+  left: 30px;
+}
+.art-caption {
+  bottom: 30px;
+  right: 30px;
+  text-align: right;
+}
+.cover-footer {
+  border-bottom: 0;
+}
+.cover-footer a {
+  font-weight: 700;
+  text-decoration: none;
+}
+.newspaper-section {
+  max-width: 1500px;
+  margin: auto;
+  padding: 110px 4vw;
+  border-top: 1px solid #171715;
+}
+.section-label {
+  display: flex;
+  gap: 35px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #aaa398;
+}
+.section-label span:last-child {
+  margin-left: auto;
+  color: #6a655c;
+}
+.about-grid,
+.headline-row,
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10%;
+}
+.about h2,
+.headline-row h2,
+.contact h2 {
+  font-family: "Libre Baskerville", serif;
+  font-size: clamp(2.7rem, 5vw, 6rem);
+  line-height: 1.03;
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  margin: 55px 0;
+}
+.columns {
+  column-count: 2;
+  column-gap: 40px;
+  margin-top: 65px;
+}
+.columns p {
+  margin-top: 0;
+  break-inside: avoid;
+}
+.dropcap:first-letter {
+  font-family: "Libre Baskerville", serif;
+  font-size: 4.8rem;
+  float: left;
+  line-height: 0.75;
+  padding: 5px 7px 0 0;
+  color: #8a6645;
+}
+.headline-row {
+  align-items: end;
+}
+.headline-row h2 {
+  margin-bottom: 45px;
+}
+.headline-row > p {
+  font-family: "Libre Baskerville", serif;
+  font-size: 1.05rem;
+  max-width: 440px;
+  margin-bottom: 45px;
+}
+.case {
+  border-top: 1px solid #171715;
+  padding-top: 18px;
+}
+.case-meta {
+  font-family: "DM Mono", monospace;
+  font-size: 0.67rem;
+  letter-spacing: 0.08em;
+  color: #6a655c;
+}
+.hero-case {
+  margin-top: 10px;
+}
+.case-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 6%;
+  padding: 28px 0 55px;
+}
+.case-image {
+  min-height: 440px;
+  position: relative;
+  overflow: hidden;
+}
+.abstract-hotel {
+  background: #20201e;
+  color: #e9e4d9;
+}
+.abstract-hotel:before {
+  content: "";
+  position: absolute;
+  width: 70%;
+  height: 120%;
+  left: 20%;
+  top: -10%;
+  background: linear-gradient(
+    90deg,
+    transparent 0 10%,
+    #8a6645 10% 12%,
+    transparent 12% 28%,
+    #b6a58f 28% 31%,
+    transparent 31%
+  );
+  transform: skewX(-18deg);
+  opacity: 0.8;
+}
+.abstract-hotel .window {
+  position: absolute;
+  width: 110px;
+  height: 210px;
+  border: 1px solid #b18a62;
+  right: 15%;
+  top: 18%;
+  transform: rotate(8deg);
+}
+.abstract-hotel .w2 {
+  right: 31%;
+  top: 35%;
+  height: 130px;
+}
+.abstract-hotel > span {
+  position: absolute;
+  z-index: 2;
+  font-family: "Libre Baskerville", serif;
+  font-size: 5rem;
+  left: 25px;
+  top: 18px;
+}
+.abstract-hotel small {
+  position: absolute;
+  bottom: 22px;
+  left: 25px;
+  font-family: "DM Mono", monospace;
+  font-size: 0.6rem;
+}
+.case-copy h3 {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-size: clamp(3rem, 5vw, 6rem);
+  line-height: 0.98;
+  letter-spacing: -0.06em;
+  margin: 30px 0;
+}
+.dek {
+  font-family: "Libre Baskerville", serif;
+  font-size: 1.05rem;
+  max-width: 600px;
+}
+.mini-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 15px;
+  margin: 30px 0;
+  color: #6a655c;
+}
+.read-more {
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.case-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.case-pair .case {
+  padding: 30px;
+  min-height: 430px;
+}
+.case .number {
+  font-family: "Libre Baskerville", serif;
+  font-size: 4rem;
+  color: #8a6645;
+  margin: 40px 0 15px;
+}
+.case h3 {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-size: 2.8rem;
+  line-height: 1.02;
+  margin: 0 0 20px;
+}
+.case p {
+  max-width: 530px;
+}
+.dark {
+  background: #171715;
+  color: #e9e4d9;
+  border-color: #171715;
+}
+.dark .case-meta,
+.dark p {
+  color: #bdb5a9;
+}
+.method {
+  background: #dcd5c8;
+}
+.method h2 {
+  font-family: "Libre Baskerville", serif;
+  font-size: clamp(3rem, 6vw, 7rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.06em;
+  margin: 55px 0;
+}
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.method-grid > div {
+  border-top: 1px solid #171715;
+  padding-top: 15px;
+}
+.method-grid span {
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+  color: #8a6645;
+}
+.method-grid h3 {
+  font-family: "Libre Baskerville", serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+.manifesto {
+  background: #171715;
+  color: #e9e4d9;
+  padding: 110px 12vw;
+  text-align: center;
+}
+.quote-mark {
+  font-family: "Libre Baskerville", serif;
+  color: #b18a62;
+  font-size: 6rem;
+  line-height: 0.4;
+  margin: 0;
+}
+.manifesto blockquote {
+  font-family: "Libre Baskerville", serif;
+  font-size: clamp(1.8rem, 4vw, 4rem);
+  line-height: 1.2;
+  max-width: 1100px;
+  margin: 30px auto;
+  font-style: italic;
+}
+.quote-credit {
+  font-family: "DM Mono", monospace;
+  font-size: 0.65rem;
+  color: #aaa398;
+}
+.contact h2 {
+  margin-top: 55px;
+}
+.contact-grid {
+  align-items: start;
+}
+.contact-links {
+  display: flex;
+  gap: 30px;
+  margin-top: 35px;
+}
+.contact-links a {
+  text-decoration: none;
+  border-bottom: 1px solid #171715;
+  padding-bottom: 5px;
+}
+.interest-form {
+  border: 1px solid #171715;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: #e5dfd3;
+}
+.form-title {
+  font-family: "Libre Baskerville", serif;
+  font-size: 1.6rem;
+  border-bottom: 1px solid #aaa398;
+  padding-bottom: 15px;
+}
+.interest-form label {
+  font-family: "DM Mono", monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.interest-form input,
+.interest-form select,
+.interest-form textarea {
+  display: block;
+  width: 100%;
+  margin-top: 7px;
+  border: 0;
+  border-bottom: 1px solid #777168;
+  background: transparent;
+  padding: 10px 0;
+  font: inherit;
+  outline: none;
+}
+.interest-form textarea {
+  resize: vertical;
+}
+.interest-form button {
+  background: #171715;
+  color: #e9e4d9;
+  border: 0;
+  padding: 15px;
+  font-family: "DM Mono", monospace;
+  font-size: 0.68rem;
+  cursor: pointer;
+  margin-top: 5px;
+}
+.interest-form button:hover {
+  background: #8a6645;
+}
+.interest-form small {
+  font-size: 0.7rem;
+  color: #6a655c;
+}
+footer {
+  max-width: 1500px;
+  margin: auto;
+  border-top: 1px solid #171715;
+  padding: 25px 4vw;
+  display: flex;
+  justify-content: space-between;
+  color: #6a655c;
+}
+footer strong {
+  color: #171715;
+}
+footer span {
+  font-family: "DM Sans", sans-serif;
+  text-transform: none;
+  letter-spacing: 0;
+}
+@media (max-width: 850px) {
+  .utility span:nth-child(2),
+  .issue {
+    display: none;
+  }
+  .title-row {
+    grid-template-columns: 40px 1fr 40px;
+  }
+  .menu {
+    display: block;
+  }
+  .nav {
+    display: none;
+  }
+  .cover-grid,
+  .about-grid,
+  .headline-row,
+  .case-layout,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .cover-main {
+    border-right: 0;
+    border-bottom: 1px solid #aaa398;
+    padding: 60px 0;
+  }
+  .cover-art {
+    min-height: 430px;
+  }
+  .columns {
+    column-count: 1;
+    margin-top: 30px;
+  }
+  .about h2,
+  .headline-row h2,
+  .contact h2 {
+    margin: 40px 0 20px;
+  }
+  .headline-row > p {
+    margin: 0 0 35px;
+  }
+  .case-pair,
+  .method-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .case-image {
+    min-height: 330px;
+  }
+  .case-copy h3 {
+    font-size: 3.5rem;
+  }
+  .cover-footer {
+    flex-wrap: wrap;
+  }
+  .cover-footer span:nth-child(2),
+  .cover-footer span:nth-child(3) {
+    display: none;
+  }
+}
+@media (max-width: 520px) {
+  .publication {
+    font-size: 1.35rem;
+  }
+  .case-pair,
+  .method-grid {
+    grid-template-columns: 1fr;
+  }
+  .newspaper-section {
+    padding: 75px 5vw;
+  }
+  .cover {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+  .cover h1 {
+    font-size: 3.6rem;
+  }
+  .cover-art {
+    min-height: 350px;
+  }
+  .manifesto {
+    padding: 80px 7vw;
+  }
+  footer {
+    display: block;
+    padding: 25px 5vw;
+  }
+  .section-label span:nth-child(3) {
+    display: none;
+  }
+  }
